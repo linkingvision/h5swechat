@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/index/index.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<!-- 轮播 -->
+			<div class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/wx4.jpg" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="img/wx1.jpg" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="img/wx2.jpg" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="img/wx3.jpg" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="img/wx4.jpg" /></a></div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/wx1.jpg" /></a></div>
+				</div>
+			</div>
+			<!-- 视频 -->
+			<div class="tui-index">
+				<div class="tui-flex">
+					<div style="text-align: left;">视频</div>
+					<div style="text-align: right;">
+						<img class="index-img" src="img/basic.png" />
+					</div>
+				</div>
+				<div id="video-app">
+					<div id="video-app-play" class="tui-flex-start">
+
+					</div>
+					<!-- <div class="tui-flex-start">
+					<div class="tui-center tui-col-6">
+						<img src="img/indexssy.jpg" class=" tui-slide-image" />
+					</div>
+					<div class="tui-center tui-col-6">
+						<img src="img/indexssy.jpg" class=" tui-slide-image" />
+					</div>
+					<div class="tui-center tui-col-6">
+						<img src="img/indexssy.jpg" class=" tui-slide-image" />
+					</div>
+					<div class="tui-center tui-col-6">
+						<video id="app2222" poster="http://47.103.61.250:9081/api/v1/GetImage?token=34020000001320000071&session=session"  class="tui-slide-image"></video>
+						<div class="tui-play">播放</div>
+					</div>
+				</div> -->
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="js/js/h5splayer(1).js"></script>
+	<script src="js/js/h5splayerhelper.js"></script>
+	<script>
+		// var conf="";
+		var h5handler = undefined;
+		//点击添加图像
+		dianji();
+
+		function dianji() {
+			$.ajax({
+				url: 'http://47.103.61.250:9081//api/v1/GetSrc?getonline=false',
+				success: function(result) {
+					//console.log(result);
+					var data = result.src;
+					//console.log(data.strToken);
+					for (var i = 0; i < data.length; i++) {
+						var strPosterUri = "http:" + '//' + "47.103.61.250:9081" + "/" +
+							'api/v1/GetImage?token=' + data[i].strToken + '&session=' + "session";
+						var video = '<div class="tui-center tui-col-6"> ' +
+							'<video data-a="' + data[i].strToken + '" poster="' + strPosterUri + '" id="app' + data[i].strToken +
+							'" class="tui-slide-image"></video>' +
+							'<div class="tui-play" data-token="' + data[i].strToken + '">播放</div>' +
+							'</div>'
+						$("#video-app #video-app-play").append(video);
+					}
+				}
+			});
+		}
+		//点击播放
+		$("body").on("click", ".tui-play", function() {
+			if (h5handler != undefined) {
+				h5handler.disconnect();
+				delete h5handler;
+				h5handler = undefined;
+			}
+			var a = $(this).data("token");
+			console.log("+++++++++", a)
+			var conf = {
+				videoid: 'app' + a,
+				protocol: 'http:', //http: or https:
+				host: "47.103.61.250:9081", //localhost:8080
+				streamprofile: "main", // {string} - stream profile, main/sub or other predefine transcoding profile
+				rootpath: '/', // '/'
+				token: a,
+				hlsver: 'v1', //v1 is for ts, v2 is for fmp4
+				session: "session"
+			};
+			h5handler = new H5sPlayerWS(conf);
+			h5handler.connect();
+
+		})
+	</script>
+</html>
+<script>
+	// console.log("++++++++++++",document.getElementById("neirong"))
+	// $.ajax({url:'http://47.103.61.250:9081//api/v1/GetSrc?getonline=false',success:function(result){
+	// 	console.log(result);
+	// }});
+</script>

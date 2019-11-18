@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <button type="button" bindtap='search'>125</button> -->
+  <web-view src="http://linkingvision.cn:9081/mui/#"></web-view>
+</view>

@@ -1,0 +1,51 @@
+/* 轮播 */
+.mui-slider-item img{
+	height: 200px;
+}
+/* 视频 */
+.tui-index{
+	margin: 20px 0;
+	background-color: #e1e1e1;
+	padding: 20px 0;
+	border-radius: 12px;
+}
+.tui-flex {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+}
+.tui-flex-start {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.index-img {
+	width: 1.4rem;
+	height: 1.4rem;
+}
+
+.tui-col-6 {
+	width: 50%;
+}
+
+.tui-slide-image {
+	width: 100%;
+	display: block;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	/* transition: all 0.1s linear; */
+}
+
+.tui-center {
+	padding: 18px 10px;
+	margin-bottom: 12px;
+}
+.tui-play{
+	text-align: center;
+	font-size: 12px;
+	padding: 5px 0;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	background: rgb(86, 119, 252);
+}

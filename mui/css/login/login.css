@@ -1,0 +1,105 @@
+	.tui-bg-box {
+		width: 100%;
+		box-sizing: border-box;
+		position: relative;
+		padding-top: 44upx;
+	}
+
+	.tui-photo {
+		height: 138upx;
+		width: 138upx;
+		display: block;
+		margin: 10upx auto 0 auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	.tui-login-name {
+		width: 200upx;
+		height: 40upx;
+		font-size: 30upx;
+		color: #fff;
+		margin: 36upx auto 0 auto;
+		text-align: center;
+		position: relative;
+		z-index: 2;
+	}
+
+	.tui-bg-img {
+		width: 100%;
+		height: 346upx;
+		display: block;
+		position: absolute;
+		top: 0;
+	}
+
+	.tui-login-from {
+		width: 100%;
+		padding: 128upx 104upx 0 104upx;
+		box-sizing: border-box;
+	}
+
+	.tui-input {
+		font-size: 32upx;
+		flex: 1;
+		display: inline-block;
+		padding-left: 32upx;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	.tui-line-cell {
+		padding: 27upx 0;
+		display: -webkit-flex;
+		display: flex;
+		-webkiit-align-items: center;
+		align-items: center;
+		position: relative;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	.tui-line-cell::after {
+		content: '';
+		position: absolute;
+		border-bottom: 1upx solid #e0e0e0;
+		-webkit-transform: scaleY(0.5);
+		transform: scaleY(0.5);
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+
+	.tui-top28 {
+		margin-top: 28upx;
+	}
+
+	.tui-btn-class {
+		width: 196upx !important;
+		height: 54upx !important;
+		border-radius: 27upx !important;
+		font-size: 28upx !important;
+		padding: 0 !important;
+		line-height: 54upx !important;
+	}
+
+	.tui-btn-submit {
+		margin-top: 100upx;
+	}
+
+	.tui-protocol {
+		color: #333;
+		font-size: 24upx;
+		text-align: center;
+		width: 100%;
+		margin-top: 29upx;
+	}
+
+	.tui-protocol-red {
+		color: #f54f46;
+	}
+	/*按钮*/
+	.tui-btm {
+		margin-bottom: 20rpx;
+		padding: 0 25rpx;
+	}
